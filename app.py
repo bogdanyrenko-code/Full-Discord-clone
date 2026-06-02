@@ -5,7 +5,8 @@ import uuid
 import json
 import base64
 import os
-
+import eventlet
+eventlet.monkey_patch()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24).hex()
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode='threading', max_http_buffer_size=50000000)
